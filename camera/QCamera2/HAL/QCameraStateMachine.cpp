@@ -2903,6 +2903,9 @@ int32_t QCameraStateMachine::procEvtPreviewPicTakingState(qcamera_sm_evt_enum_t 
             case QCAMERA_INTERNAL_EVT_FOCUS_POS_UPDATE:
                 rc = m_parent->processFocusPositionInfo(internal_evt->focus_pos);
                 break;
+            case QCAMERA_INTERNAL_EVT_RESET_FRAME_ID:
+                rc = m_parent->processFrameIDReset(internal_evt->reset_frame_idx);
+                break;
             default:
                 break;
             }

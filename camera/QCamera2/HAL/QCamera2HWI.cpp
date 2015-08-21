@@ -4049,6 +4049,21 @@ int32_t QCamera2HardwareInterface::processFocusPositionInfo(cam_focus_pos_info_t
     return NO_ERROR;
 }
 
+int32_t QCamera2HardwareInterface::processFrameIDReset(uint32_t frame_id)
+{
+    if (needReprocess()) {
+        QCameraPicChannel *pReprocChannel =
+                (QCameraPicChannel *)m_postprocessor.getReprocChannel();
+        if (NULL != pReprocChannel) {
+            //flush the reprocess channel buffer and queue.
+            uint32_t flush_frame_idx = frame_id;
+            CDBG_HIGH("%s, flush the reprocess channel buffer", __func__);
+            pReprocChannel->flushSuperbuffer(flush_frame_idx);
+        }
+    }
+    return NO_ERROR;
+}
+
 /*===========================================================================
  * FUNCTION   : processAutoFocusEvent
  *
