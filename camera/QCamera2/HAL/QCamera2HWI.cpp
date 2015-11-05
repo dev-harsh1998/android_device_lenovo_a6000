@@ -39,6 +39,11 @@
 #include <gralloc_priv.h>
 #include <gui/Surface.h>
 
+#include <binder/Parcel.h>
+#include <binder/IServiceManager.h>
+#include <utils/RefBase.h>
+#include <QServiceUtils.h>
+
 #include "QCamera2HWI.h"
 #include "QCameraMem.h"
 
@@ -57,9 +62,10 @@ namespace qcamera {
 cam_capability_t *gCamCapability[MM_CAMERA_MAX_NUM_SENSORS];
 qcamera_saved_sizes_list savedSizes[MM_CAMERA_MAX_NUM_SENSORS];
 
-static pthread_mutex_t g_camlock = PTHREAD_MUTEX_INITIALIZER;
+extern pthread_mutex_t gCamLock;
 volatile uint32_t gCamHalLogLevel = 0;
 unsigned int QCamera2HardwareInterface::mCameraSessionActive = 0;
+extern uint8_t gNumCameraSessions;
 
 camera_device_ops_t QCamera2HardwareInterface::mCameraOps = {
     .set_preview_window =         QCamera2HardwareInterface::set_preview_window,
@@ -1305,6 +1311,13 @@ int QCamera2HardwareInterface::openCamera()
 
     mCameraOpened = true;
 
+    //Notify display HAL that a camera session is active
+    pthread_mutex_lock(&gCamLock);
+    if (gNumCameraSessions++ == 0) {
+        setCameraLaunchStatus(true);
+    }
+    pthread_mutex_unlock(&gCamLock);
+
     return NO_ERROR;
 }
 
@@ -1372,6 +1385,15 @@ int QCamera2HardwareInterface::closeCamera()
     if (mExifParams.debug_params) {
         free(mExifParams.debug_params);
     }
+
+    //Notify display HAL that there is no active camera session
+    pthread_mutex_lock(&gCamLock);
+    if (--gNumCameraSessions == 0) {
+        setCameraLaunchStatus(false);
+    }
+    pthread_mutex_unlock(&gCamLock);
+
+
     CDBG_HIGH("%s: X", __func__);
     return rc;
 }
@@ -1470,10 +1492,10 @@ int QCamera2HardwareInterface::getCapabilities(uint32_t cameraId,
     ATRACE_CALL();
     int rc = NO_ERROR;
     struct  camera_info *p_info;
-    pthread_mutex_lock(&g_camlock);
+    pthread_mutex_lock(&gCamLock);
     p_info = get_cam_info(cameraId);
     memcpy(info, p_info, sizeof (struct camera_info));
-    pthread_mutex_unlock(&g_camlock);
+    pthread_mutex_unlock(&gCamLock);
     return rc;
 }
 
