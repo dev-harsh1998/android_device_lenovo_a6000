@@ -7618,11 +7618,17 @@ int32_t QCameraParameters::setHDRAEBracket(cam_exp_bracketing_t hdrBracket)
 int32_t QCameraParameters::setCacheVideoBuffers(const char *cacheVideoBufStr)
 {
     if (cacheVideoBufStr != NULL) {
-        int32_t cacheVideoBuf = atoi(cacheVideoBufStr);
-        CDBG("%s : Setting video buffer %s", __func__,
+        int32_t cacheVideoBuf = lookupAttr(ENABLE_DISABLE_MODES_MAP,
+                PARAM_MAP_SIZE(ENABLE_DISABLE_MODES_MAP), cacheVideoBufStr);
+        if(cacheVideoBuf != NAME_NOT_FOUND) {
+            CDBG("%s : Setting video buffer %s", __func__,
                 (cacheVideoBuf == 0) ? "UnCached" : "Cached");
-        updateParamEntry(KEY_QC_CACHE_VIDEO_BUFFERS, cacheVideoBufStr);
-        return NO_ERROR;
+            updateParamEntry(KEY_QC_CACHE_VIDEO_BUFFERS, cacheVideoBufStr);
+            return NO_ERROR;
+        }
+        else {
+            CDBG_HIGH("%s : Invalid mapped cache video value: %d",__func__, cacheVideoBuf);
+        }
     }
     CDBG_HIGH("Invalid cache video value: %s",
             (cacheVideoBufStr == NULL) ? "NULL" : cacheVideoBufStr);
