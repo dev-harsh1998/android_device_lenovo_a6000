@@ -5045,7 +5045,7 @@ int32_t QCameraParameters::initDefaultParameters()
     // Livesnapshot is not supported for 4K2K video resolutions
     set(KEY_QC_4K2K_LIVESNAP_SUPPORTED, VALUE_FALSE);
     //Set video buffers as uncached by default
-    set(KEY_QC_CACHE_VIDEO_BUFFERS, "0");
+    set(KEY_QC_CACHE_VIDEO_BUFFERS, VALUE_DISABLE);
 
     if (m_pCapability->low_power_mode_supported == 1) {
         set(KEY_QC_LOW_POWER_MODE_SUPPORTED, VALUE_TRUE);
