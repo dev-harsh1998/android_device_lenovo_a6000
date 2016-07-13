@@ -568,7 +568,6 @@ private:
     // and beforeany focus callback/cancel_focus happens. This flag is not an indication
     // of whether lens is moving or not.
     bool m_bAutoFocusRunning;
-    cam_autofocus_state_t m_currentFocusState;
 
     power_module_t *m_pPowerModule;   // power module
 
