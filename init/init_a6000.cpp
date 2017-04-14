@@ -45,10 +45,10 @@
 #include "util.h"
 
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
- 
+
 #define ALPHABET_LEN 256
 #define KB 1024
- 
+
 #define IMG_PART_PATH "/dev/block/bootdevice/by-name/modem"
 #define IMG_VER_STR "QC_IMAGE_VERSION_STRING="
 #define IMG_VER_STR_LEN 24
@@ -56,18 +56,18 @@
 #define IMG_SZ 32000 * KB    /* MMAP 32000K of modem, modem partition is 64000K */
 
 /* Boyer-Moore string search implementation from Wikipedia */
- 
+
 /* Return longest suffix length of suffix ending at str[p] */
 static int max_suffix_len(const char *str, size_t str_len, size_t p) {
     uint32_t i;
- 
+
     for (i = 0; (str[p - i] == str[str_len - 1 - i]) && (i < p); ) {
         i++;
     }
 
     return i;
 }
- 
+
 /* Generate table of distance between last character of pat and rightmost
  * occurrence of character c in pat
 */
@@ -81,7 +81,7 @@ static void bm_make_delta1(int *delta1, const char *pat, size_t pat_len) {
         delta1[idx] = pat_len - 1 - i;
     }
 }
- 
+
 /* Generate table of next possible full match from mismatch at pat[p] */
 static void bm_make_delta2(int *delta2, const char *pat, size_t pat_len) {
     int p;
@@ -103,15 +103,15 @@ static void bm_make_delta2(int *delta2, const char *pat, size_t pat_len) {
         }
     }
 }
- 
+
 static char * bm_search(const char *str, size_t str_len, const char *pat, size_t pat_len) {
     int delta1[ALPHABET_LEN];
     int delta2[pat_len];
     int i;
- 
+
     bm_make_delta1(delta1, pat, pat_len);
     bm_make_delta2(delta2, pat, pat_len);
- 
+
     if (pat_len == 0) {
         return (char *) str;
     }
@@ -128,10 +128,10 @@ static char * bm_search(const char *str, size_t str_len, const char *pat, size_t
         }
         i += MAX(delta1[(uint8_t) str[i]], delta2[j]);
     }
- 
+
     return NULL;
 }
- 
+
 static int get_img_version(char *ver_str, size_t len) {
     int ret = 0;
     int fd;
@@ -209,4 +209,3 @@ void init_target_properties()
     property_set("dalvik.vm.heapmaxfree", "8m");
 
 }
-
