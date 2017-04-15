@@ -51,9 +51,9 @@
  
 #define IMG_PART_PATH "/dev/block/bootdevice/by-name/modem"
 #define IMG_VER_STR "QC_IMAGE_VERSION_STRING="
-#define IMG_VER_STR_LEN 24
-#define IMG_VER_BUF_LEN 255
-#define IMG_SZ 32000 * KB    /* MMAP 32000K of modem, modem partition is 64000K */
+#define IMG_VER_STR_LEN 100
+#define IMG_VER_BUF_LEN 725
+#define IMG_SZ 64000 * KB    /* MMAP 32000K of modem, modem partition is 64000K */
 
 /* Boyer-Moore string search implementation from Wikipedia */
  
@@ -190,7 +190,7 @@ void init_target_properties()
     if (is2GB()) {
 	property_set("ro.build.product", "Kraft-A6000-s");
         property_set("ro.product.device", "Kraft-A6000-s");
-        property_set("ro.product.model", "Lenovo A6000 Plus");
+        property_set("ro.product.model", "Lenovo A6000 +");
         property_set("ro.product.name", "Kraft-A6000-s");
     }
     /*A6000*/
@@ -207,6 +207,6 @@ void init_target_properties()
     property_set("dalvik.vm.heaptargetutilization", "0.75");
     property_set("dalvik.vm.heapminfree", is2GB() ? "512k" : "2m");
     property_set("dalvik.vm.heapmaxfree", "8m");
-
+    property_set("ro.product.first_api_level", "19");
 }
 
