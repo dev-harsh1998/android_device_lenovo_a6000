@@ -15,7 +15,7 @@
 
 DEVICE_PATH := device/lenovo/a6000
 
-include device/lenovo/msm8916-common/BoardConfigCommon.mk
+include device/cyanogen/msm8916-common/BoardConfigCommon.mk
 
 include device/lenovo/a6000/board/*.mk
 
