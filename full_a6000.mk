@@ -25,6 +25,5 @@ $(call inherit-product, device/lenovo/a6000/device.mk)
 TARGET_VENDOR := Lenovo
 PRODUCT_DEVICE := a6000
 PRODUCT_NAME := full_a6000
-PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := A6000
 PRODUCT_MANUFACTURER := Lenovo
