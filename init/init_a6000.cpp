@@ -60,7 +60,6 @@ int is2GB()
 
 void init_target_properties()
 {
-    /* Device Check */
     property_set("dalvik.vm.heapstartsize", "8m");
     property_set("dalvik.vm.heapgrowthlimit", is2GB() ? "192m" : "96m");
     property_set("dalvik.vm.heapsize", is2GB() ? "512m" : "256m");
