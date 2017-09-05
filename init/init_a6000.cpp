@@ -34,11 +34,13 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 #include <sys/sysinfo.h>
+#include <android-base/properties.h>
 #include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
 #include "util.h"
 #include "init_msm8916.h"
+
+using android::base::SetProperty;
 
 void property_override(char const prop[], char const value[])
 {
@@ -60,10 +62,10 @@ int is2GB()
 
 void init_target_properties()
 {
-    property_set("dalvik.vm.heapstartsize", "8m");
-    property_set("dalvik.vm.heapgrowthlimit", is2GB() ? "192m" : "96m");
-    property_set("dalvik.vm.heapsize", is2GB() ? "512m" : "256m");
-    property_set("dalvik.vm.heaptargetutilization", "0.75");
-    property_set("dalvik.vm.heapminfree", is2GB() ? "512k" : "2m");
-    property_set("dalvik.vm.heapmaxfree", "8m");
+    SetProperty("dalvik.vm.heapstartsize", "8m");
+    SetProperty("dalvik.vm.heapgrowthlimit", is2GB() ? "192m" : "96m");
+    SetProperty("dalvik.vm.heapsize", is2GB() ? "512m" : "256m");
+    SetProperty("dalvik.vm.heaptargetutilization", "0.75");
+    SetProperty("dalvik.vm.heapminfree", is2GB() ? "512k" : "2m");
+    SetProperty("dalvik.vm.heapmaxfree", "8m");
 }
