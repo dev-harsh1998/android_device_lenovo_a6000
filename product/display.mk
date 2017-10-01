@@ -29,3 +29,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_small_cache_height=256 \
     ro.hwui.text_large_cache_width=2048 \
     ro.hwui.text_large_cache_height=512
+
+# Inherit 1024 dalvik's heap for now
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
