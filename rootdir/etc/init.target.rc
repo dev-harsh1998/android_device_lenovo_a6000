@@ -46,11 +46,6 @@ service vm_bms /system/bin/vm_bms
     user root
     group root wakelock
 
-service baseband-sh /system/bin/sh /system/etc/set_baseband.sh
-    class late_start
-    user root
-    oneshot
-
 on charger
    wait /dev/block/bootdevice/by-name/system
    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
