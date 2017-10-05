@@ -18,4 +18,11 @@
     <!-- Restart preview for back camera onPictureTaken -->
     <bool name="back_camera_restart_preview_onPictureTaken">true</bool>
 
+    <!-- Restart preview for front camera onPictureTaken -->
+    <bool name="front_camera_restart_preview_onPictureTaken">true</bool>
+
+    <!-- hide zsl preference and use whatever devices wants -->
+    <bool name="pref_camera_zsl_disabled">false</bool>
+    <string name="pref_camera_zsl_default" translatable="false">on</string>
+
 </resources>
