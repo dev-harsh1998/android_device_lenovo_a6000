@@ -185,7 +185,7 @@ void init_target_properties()
     int rc;
     rc = get_img_version(modem_version, IMG_VER_BUF_LEN);
     if (!rc) {
-        property_set("gsm.version.baseband", modem_version);
+        property_override("gsm.version.baseband", modem_version);
        // printf("Detected modem version=%s\n", modem_version);
 }
 
