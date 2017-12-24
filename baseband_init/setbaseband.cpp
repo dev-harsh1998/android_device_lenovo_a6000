@@ -45,7 +45,6 @@
 #include <sys/sysinfo.h>
 #include "vendor_init.h"
 #include <android-base/properties.h>
-#include "util.h"
 
 void property_override(char const prop[], char const value[])
 {
