@@ -580,7 +580,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # TextClassifier
 PRODUCT_PACKAGES += \
-    textclassifier.bundle1
+    textclassifier.smartselection.bundle1
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
