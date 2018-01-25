@@ -156,7 +156,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.speaker=false \
     vendor.audio.offload_wakelock=false \
     persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=1
+    persist.sys.wfd.virtual=1 \
+    debug.sf.enable_hwc_vds=1
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
