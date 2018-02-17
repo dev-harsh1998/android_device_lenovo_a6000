@@ -16,7 +16,7 @@
 $(call inherit-product, device/lenovo/a6000/full_a6000.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/aosp/common.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
@@ -24,8 +24,9 @@ TARGET_BOARD_PLATFORM_VARIANT := msm8916
 # Assert
 TARGET_OTA_ASSERT_DEVICE := Kraft-T,a6000,K30-T,A6000,Kraft-W,Kraft-C,k30t,msm8916,Kraft-A6000,wt86518
 
-PRODUCT_NAME := lineage_a6000
+PRODUCT_NAME := aosp_a6000
 BOARD_VENDOR := Lenovo
+TARGET_BOOT_ANIMATION_RES := 720
 
 # Build fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
