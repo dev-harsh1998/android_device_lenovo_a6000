@@ -66,6 +66,10 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 vendor/lib/libmmcamera_gc2355_8916.so
 vendor/lib/libmmcamera_imx219_q8n13a.so
 
+# Face Unlock
+vendor/lib/libprotobuf-cpp-haxx.so|c280b24acc9c17ca20072d51be9f87b63434dc04
+vendor/lib/libfacenet-32.so|09cf052e838d6aa16f2f6d7932643f58172566ba
+
 # ADSP - from crackling
 bin/adsprpcd|95030b23730f77beecd74338e9f997e7b853e7a5
 vendor/lib64/libadsprpc.so|ad8ed801997d8a35a4f600649adc8180d0e7eab7
