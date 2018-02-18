@@ -1,0 +1,7 @@
+#============= toolbox ==============
+allow toolbox bluetooth_prop:property_service set;
+allow toolbox diag_device:chr_file { read write };
+allow toolbox init:fifo_file { getattr write };
+allow toolbox init:unix_stream_socket connectto;
+allow toolbox property_socket:sock_file write;
+

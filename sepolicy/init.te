@@ -1,0 +1,32 @@
+#============= init ==============
+allow init battery_data_device:chr_file { ioctl write };
+allow init debugfs:file write;
+allow init hal_light_hwservice:hwservice_manager add;
+allow init hidl_base_hwservice:hwservice_manager add;
+allow init hwservicemanager:binder { call transfer };
+allow init ion_device:chr_file { ioctl write };
+allow init modem_efs_partition_device:blk_file write;
+allow init netd:unix_stream_socket connectto;
+allow init netd_socket:sock_file write;
+allow init persist_bluetooth_file:file append;
+allow init qmuxd_socket:sock_file write;
+allow init rpmb_device:blk_file write;
+allow init rtc_device:chr_file ioctl;
+allow init self:capability2 block_suspend;
+allow init self:netlink_route_socket { bind create getattr nlmsg_read nlmsg_write read setopt write };
+allow init self:netlink_socket { bind create write };
+allow init self:netlink_xfrm_socket { bind create };
+allow init self:rawip_socket { create getopt setopt };
+allow init self:socket { bind create ioctl read write };
+allow init self:udp_socket ioctl;
+allow init shell_exec:file execute_no_trans;
+allow init smd_device:chr_file { ioctl write };
+allow init ssd_device:blk_file write;
+allow init system_file:file execute_no_trans;
+allow init tee_device:chr_file { ioctl write };
+allow init uio_device:chr_file write;
+allow init vendor_file:file execute_no_trans;
+allow init vfat:file { getattr open read };
+allow init video_device:chr_file { ioctl write };
+allow init vm_bms_device:chr_file write;
+
