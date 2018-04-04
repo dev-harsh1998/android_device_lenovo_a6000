@@ -42,7 +42,7 @@ on boot
     chown system system /sys/class/sensors/light/enable
     chmod 0660 /sys/class/sensors/light/enable
 
-service vm_bms /system/bin/vm_bms
+service vm_bms /vendor/bin/vm_bms
     class core
     user root
     group root wakelock
