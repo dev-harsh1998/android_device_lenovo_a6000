@@ -17,6 +17,9 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
+# Add APN(s)
+PRODUCT_COPY_FILES += device/lenovo/a6000/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
+
 # Inherit from a6000 device
 $(call inherit-product, device/lenovo/a6000/device.mk)
 
