@@ -98,7 +98,6 @@ void power_hint(power_hint_t hint, void *data);
 void power_set_interactive(int on);
 void set_feature(feature_t feature, int state);
 int extract_platform_stats(uint64_t *list);
-int __attribute__ ((weak)) get_number_of_profiles();
 
 #ifdef __cplusplus
 }

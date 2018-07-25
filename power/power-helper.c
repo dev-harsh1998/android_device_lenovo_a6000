@@ -56,6 +56,7 @@
 #define USINSEC 1000000L
 #define NSINUS 1000L
 #define TAP_TO_WAKE_NODE "/sys/android_touch/doubletap2wake"
+#define ARRAY_SIZE(x) (sizeof((x))/sizeof((x)[0]))
 #define LINE_SIZE 128
 
 static int display_hint_sent;
@@ -199,17 +200,9 @@ void power_hint(power_hint_t hint, void *data)
         case POWER_HINT_VIDEO_DECODE:
             process_video_decode_hint(data);
         break;
-        case POWER_HINT_SET_PROFILE:
-            ALOGI("set profile power hint not handled in power_hint_override");
-        break;
         default:
         break;
     }
-}
-
-int get_number_of_profiles()
-{
-    return 0;
 }
 
 int __attribute__ ((weak)) set_interactive_override(int UNUSED(on))
