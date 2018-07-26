@@ -28,6 +28,17 @@ LOCAL_SHARED_LIBRARIES := \
     libhardware \
     libutils
 
+
+ifeq ($(TARGET_USES_LINEAGE_POWER),true)
+LOCAL_SRC_FILES := \
+    service_lineage.cpp \
+    Power_lineage.cpp \
+    power-helper_lineage.c \
+    metadata-parser.c \
+    utils.c \
+    list.c \
+    hint-data.c
+else
 LOCAL_SRC_FILES := \
     service.cpp \
     Power.cpp \
@@ -36,17 +47,25 @@ LOCAL_SRC_FILES := \
     utils.c \
     list.c \
     hint-data.c
+endif
 
 LOCAL_C_INCLUDES := external/libxml2/include \
                     external/icu/icu4c/source/common
 
 LOCAL_CFLAGS += -Wall -Wextra -Werror
 
+ifeq ($(TARGET_USES_LINEAGE_POWER),true)
+LOCAL_SRC_FILES += power-8916_lineage.c
+else
 LOCAL_SRC_FILES += power-8916.c
+endif
 
 LOCAL_MODULE := android.hardware.power@1.0-service.a6000
 LOCAL_INIT_RC := android.hardware.power@1.0-service.a6000.rc
 LOCAL_SHARED_LIBRARIES += android.hardware.power@1.0
+ifeq ($(TARGET_USES_LINEAGE_POWER),true)
+LOCAL_SHARED_LIBRARIES += vendor.lineage.power@1.0_vendor
+endif
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_OWNER := qcom
 LOCAL_VENDOR_MODULE := true

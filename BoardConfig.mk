@@ -18,6 +18,9 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8916
 TARGET_BOARD_PLATFORM := msm8916
 TARGET_NO_BOOTLOADER := true
 
+# Lineage-POWER
+TARGET_USES_LINEAGE_POWER := true
+
 # Architecture
 TARGET_BOARD_SUFFIX := _32
 TARGET_ARCH := arm
@@ -91,7 +94,12 @@ TARGET_RIL_VARIANT := caf
 MALLOC_SVELTE := true
 
 # HIDL
+
+ifeq ($(TARGET_USES_LINEAGE_POWER),true)
+DEVICE_MANIFEST_FILE := device/lenovo/a6000/manifest_lineage.xml
+else
 DEVICE_MANIFEST_FILE := device/lenovo/a6000/manifest.xml
+endif
 DEVICE_MATRIX_FILE := device/lenovo/a6000/compatibility_matrix.xml
 PRODUCT_VENDOR_MOVE_ENABLED := true
 
