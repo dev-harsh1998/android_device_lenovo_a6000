@@ -88,6 +88,9 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
+    # Make WCNSS_qcom_cfg.ini available in /data/vendor
+    symlink /data/misc/wifi/WCNSS_qcom_cfg.ini /data/vendor/wifi/WCNSS_qcom_cfg.ini
+
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
     mkdir /data/connectivity/nsrm 0771 system system
