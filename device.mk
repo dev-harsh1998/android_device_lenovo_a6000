@@ -173,8 +173,7 @@ PRODUCT_COPY_FILES += \
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    device/lenovo/a6000/overlay \
-    device/lenovo/a6000/overlay-lineage
+    device/lenovo/a6000/overlay
 
 # Enforced RRO targets
 PRODUCT_ENFORCE_RRO_TARGETS := \
