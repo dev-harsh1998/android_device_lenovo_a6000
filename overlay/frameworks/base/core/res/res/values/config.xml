@@ -304,10 +304,6 @@
     <!-- enabling WifiDisplay(Miracast Source)-->
     <bool name="config_enableWifiDisplay">true</bool>
 
-    <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
-         in hardware. -->
-    <bool name="config_setColorTransformAccelerated">true</bool>
-
     <!-- Values for GPS configuration -->
     <string-array translatable="false" name="config_gpsParameters">
         <item>XTRA_SERVER_1=https://xtrapath1.izatcloud.net/xtra3grc.bin</item>
@@ -327,3 +323,4 @@
     <bool name="config_supportDoubleTapWake">true</bool>
     
 </resources>
+
