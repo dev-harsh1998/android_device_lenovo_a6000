@@ -13,7 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/lenovo/a6000/full_a6000.mk)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, device/lenovo/a6000/device.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
@@ -21,8 +23,22 @@ TARGET_BOARD_PLATFORM_VARIANT := msm8916
 # Assert
 TARGET_OTA_ASSERT_DEVICE := Kraft-T,a6000,K30-T,A6000,Kraft-W,Kraft-C,k30t,msm8916,Kraft-A6000,wt86518
 
+TARGET_VENDOR := Lenovo
+PRODUCT_DEVICE := a6000
 PRODUCT_NAME := aosp_a6000
 BOARD_VENDOR := Lenovo
+PRODUCT_BRAND := Lenovo
+PRODUCT_MODEL := A6000
+PRODUCT_MANUFACTURER := Lenovo
+
+# Device Identifiers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+     PRODUCT_MODEL="Lenovo A6000" \
+     PRODUCT_NAME="Kraft-A6000" \
+     PRODUCT_DEVICE="Kraft-A6000"
+
+PRODUCT_PROPERTY_OVERRIDES += \
+     ro.build.product=Kraft-A6000
 
 # Build fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
@@ -30,4 +46,11 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 BUILD_FINGERPRINT := Lenovo/Kraft-A6000/Kraft-A6000:5.0.2/LRX22G/Kraft-A6000_S061_160727:user/release-keys
 
+# GMS
 PRODUCT_GMS_CLIENTID_BASE := android-lenovo
+
+# Add APN(s)
+PRODUCT_COPY_FILES += device/lenovo/a6000/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
+
+# Add BootAnimation
+PRODUCT_COPY_FILES += device/lenovo/a6000/prebuilt/bootanimation.zip:system/media/bootanimation.zip
