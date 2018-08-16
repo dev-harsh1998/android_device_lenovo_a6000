@@ -248,7 +248,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/vendor/etc/permissions/android.software.sip.voip.xml
 
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service.a6000 \
+    power.msm8916
+
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.max_starting_bg=8
@@ -262,8 +266,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=19
 
 # Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2016-01-01
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.lineage.build.vendor_security_patch=2016-01-01
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
