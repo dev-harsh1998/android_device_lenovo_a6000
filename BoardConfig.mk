@@ -18,6 +18,11 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8916
 TARGET_BOARD_PLATFORM := msm8916
 TARGET_NO_BOOTLOADER := true
 
+# HAL
+TARGET_QCOM_AUDIO_VARIANT := caf-msm8916
+TARGET_QCOM_DISPLAY_VARIANT := caf-msm8916
+TARGET_QCOM_MEDIA_VARIANT := caf-msm8916
+
 # Architecture
 TARGET_BOARD_SUFFIX := _32
 TARGET_ARCH := arm
@@ -37,8 +42,6 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 an
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
-KERNEL_TOOLCHAIN := $(BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/gcc8/bin
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-gnueabi-
 TARGET_KERNEL_SOURCE := kernel/lenovo/a6000
 TARGET_KERNEL_CONFIG := lineageos_a6000_defconfig
 
@@ -153,12 +156,12 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # SEpolicy
-BOARD_SEPOLICY_DIRS += \
+#BOARD_SEPOLICY_DIRS += \
     device/lenovo/a6000/sepolicy
 
 # Qcom Sepolicy
-include device/qcom/sepolicy/sepolicy.mk
-include device/qcom/sepolicy/legacy-sepolicy.mk
+#include device/qcom/sepolicy/sepolicy.mk
+#include device/qcom/sepolicy/legacy-sepolicy.mk
 
 # WLAN
 BOARD_HAS_QCOM_WLAN := true
@@ -168,7 +171,7 @@ BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
-TARGET_USES_QCOM_WCNSS_QMI := true
+TARGET_USES_QCOM_WCNSS_QMI := flase
 TARGET_USES_WCNSS_CTRL := true
 TARGET_PROVIDES_WCNSS_QMI := true
 WIFI_DRIVER_FW_PATH_AP := "ap"
