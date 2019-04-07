@@ -20,6 +20,10 @@
 #include <binder/ProcessState.h>
 #include <hidl/HidlTransportSupport.h>
 
+/* dev-harsh1998: set page size to 16kb for touch hal */
+#include <hwbinder/ProcessState.h>
+#include <cutils/properties.h>
+
 #include "KeyDisabler.h"
 
 using android::OK;
@@ -31,7 +35,18 @@ using android::hardware::joinRpcThreadpool;
 using ::vendor::lineage::touch::V1_0::IKeyDisabler;
 using ::vendor::lineage::touch::V1_0::implementation::KeyDisabler;
 
+#define DEFAULT_TOUCHHAL_HW_BINDER_SIZE_KB 16
+size_t getHWBinderMmapSize() {
+    size_t value = 0;
+    value = property_get_int32("persist.vendor.a6000.touchhal.hw.binder.size", DEFAULT_TOUCHHAL_HW_BINDER_SIZE_KB);
+    if (!value) value = DEFAULT_TOUCHHAL_HW_BINDER_SIZE_KB; // default to 1 page of 16kb
+     return 1024 * value;
+}
+
+
 int main() {
+    /* default to 16kb */
+    android::hardware::ProcessState::initWithMmapSize(getHWBinderMmapSize());
     sp<KeyDisabler> keyDisabler;
     status_t status;
 

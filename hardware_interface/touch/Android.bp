@@ -26,6 +26,8 @@ cc_binary {
         "libbase",
         "libhidlbase",
         "libhidltransport",
+        "libhwbinder",
+        "libcutils",
         "libutils",
         "vendor.lineage.touch@1.0",
     ],
