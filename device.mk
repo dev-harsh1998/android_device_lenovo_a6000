@@ -474,6 +474,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.isa.arm.features=div \
     persist.sys.dalvik.vm.lib.2=libart.so
 
+# Battery
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.small_battery=true
 
 # TextClassifier
 PRODUCT_PACKAGES += \
