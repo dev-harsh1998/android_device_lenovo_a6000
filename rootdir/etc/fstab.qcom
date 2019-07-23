@@ -20,4 +20,4 @@
 # Specify our SDcard as primary storage
 /devices/soc.0/7864900.sdhci/mmc_host*       auto         auto    defaults   voldmanaged=sdcard0:auto,encryptable=userdata,noemulatedsd
 
-/dev/block/zram0                             none         swap    defaults zramsize=425762008,max_comp_streams=3
+# /dev/block/zram0                             none         swap    defaults zramsize=1073741824
