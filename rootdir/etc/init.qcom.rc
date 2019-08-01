@@ -97,8 +97,6 @@ on boot
     mkdir /persist/alarm 0770 system system
     mkdir /persist/display 0770 system graphics
 
-    mkdir /data/time/ 0770 system system
-    chmod 0770 /data/time/ats_2
     # Double tap to wake 
     chown system system /sys/android_touch/doubletap2wake
     chmod 0660  /sys/android_touch/doubletap2wake
@@ -238,6 +236,14 @@ service qseecomd /system/vendor/bin/qseecomd
    group root
    writepid /dev/cpuset/system-background/tasks
 
+service time_daemon /system/vendor/bin/time_daemon
+   capabilities SYS_TIME
+   class late_start
+   user root
+   group root
+   seclabel u:object_r:time_daemon_exec:s0
+   writepid /dev/cpuset/system-background/tasks
+
 service ppd /system/vendor/bin/mm-pp-daemon
     class late_start
     disabled
@@ -268,14 +274,6 @@ service wcnss-service /system/vendor/bin/wcnss_service
     user system
     group system wifi radio
     oneshot
-
-service timekeep /system/vendor/bin/timekeep restore
-    class late_start
-    user root
-    group root system
-    oneshot
-    seclabel u:r:timekeep:s0
-    writepid /dev/cpuset/system-background/tasks
 
 on property:init.svc.surfaceflinger=restarting
     stop hwcomposer-2-1
