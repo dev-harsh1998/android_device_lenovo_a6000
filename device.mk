@@ -243,7 +243,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Init scripts
 PRODUCT_PACKAGES += \
-    fstab.qcom \
     init.target.rc \
     init.qcom.rc \
     init.qcom.power.rc \
@@ -251,6 +250,11 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
+
+# Fstab
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
 
 # Media
 PRODUCT_COPY_FILES += \
