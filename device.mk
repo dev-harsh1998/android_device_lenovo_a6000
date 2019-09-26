@@ -161,7 +161,7 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl \
     camera.msm8916 \
     libmm-qcamera \
-    SnapdragonCamera2
+    Camera2
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -200,8 +200,7 @@ PRODUCT_COPY_FILES += \
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
 
 # Enforced RRO targets
 # PRODUCT_ENFORCE_RRO_TARGETS := \
