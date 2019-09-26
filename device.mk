@@ -337,10 +337,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     set_baseband.sh
 
-# Dalvik's hack
-PRODUCT_PACKAGES += \
-    set_dalvik.sh
-
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.a6000
@@ -417,11 +413,11 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=16m \
     dalvik.vm.heapgrowthlimit=128m \
-    dalvik.vm.heapminfree=6m \
-    dalvik.vm.heapstartsize=8m \
     dalvik.vm.heapsize=256m \
     dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=512k \
     dalvik.vm.heapmaxfree=8m \
     dalvik.vm.zygotemaxfailedboots=5 \
     dalvik.vm.foreground-heap-growth-multiplier=2.0 \
