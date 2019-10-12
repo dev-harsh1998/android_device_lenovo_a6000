@@ -7,7 +7,8 @@ LOCAL_CLANG_CFLAGS += \
         -Wno-error=gnu-designator \
         -Wno-error=unused-variable \
         -Wno-error=format \
-        -Wno-error=unused-parameter
+        -Wno-error=unused-parameter \
+	-Wno-error=implicit-fallthrough
 
 LOCAL_SRC_FILES := \
         QCamera2Factory.cpp \
