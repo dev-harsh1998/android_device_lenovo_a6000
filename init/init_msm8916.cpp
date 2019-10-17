@@ -98,6 +98,33 @@ void set_device_dalvik_properties()
   property_set("dalvik.vm.heapmaxfree", "8m");
 }
 
+/*
+ * Function: setup_rootfs_directories
+ * Parameters: None
+ * Return Type: int
+ * Returned values: 0 & 1
+ * Description: if 0 is the returned value then the creation of
+ * directories was successful and we can continue with the mounting
+ * process if 1 is returned then F for respects. Here mkdir() syscall
+ * from header sys/types.h & sys/stat.h is used.
+ */
+int setup_rootfs_directories()
+{
+  // Return value
+  int err = 0;
+ /*
+  * Make root directories of persist and firmware.
+  * mkdir() returns -1 if it fails to create directories.
+  * so we take absolute (abs()) of it for a positive value.
+  * Second check is to make sure that creation of first directory.
+  * was successful and now we can move to creation of other one.
+  */
+  err = abs(mkdir("/persist", 0771));
+  ( err ) ? err = 1 : err = abs(mkdir("/firmware", 0771));
+  // return err, Pray for it to be 0 ¯\_(ツ)_/¯
+  return err;
+}
+
 void vendor_load_properties()
 {
     set_device_dalvik_properties();
