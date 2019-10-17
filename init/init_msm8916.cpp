@@ -34,6 +34,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/sysinfo.h>
+#include <sys/mount.h>
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
@@ -125,8 +126,20 @@ int setup_rootfs_directories()
   return err;
 }
 
+void mount_required_directories()
+{
+  int err = setup_rootfs_directories();
+  if (!err){
+    err = abs(mount("/dev/block/platform/soc.0/7824900.sdhci/by-name/persist", "/persist", "ext4", MS_NOATIME, NULL));
+    ( err == 0 ) ? err = abs(mount("/dev/block/platform/soc.0/7824900.sdhci/by-name/modem", "/firmware", "sdfat", MS_RDONLY, NULL)) : err = 1;
+  } else {
+    return;
+  }
+}
+
 void vendor_load_properties()
 {
+    mount_required_directories();
     set_device_dalvik_properties();
     init_alarm_boot_properties();
 }
