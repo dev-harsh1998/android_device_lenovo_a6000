@@ -50,6 +50,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.mdpcomp.idletime=600 \
     persist.hwc.mdpcomp.enable=true \
     persist.hwc.ptor.enable=true \
+    pm.dexopt.shared=quicken \
+    pm.dexopt.downgrade_after_inactive_days=10 \
     debug.enable.sglscale=1 \
     debug.sf.hw=1 \
     debug.hwui.renderer=opengl \
@@ -82,6 +84,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608
+
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -234,6 +240,9 @@ PRODUCT_PACKAGES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8916
+
+PRODUCT_PACKAGES += InProcessNetworkStack
+PRODUCT_DISABLE_SCUDO := true
 
 # FM
 PRODUCT_PACKAGES += \

@@ -44,7 +44,8 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 TARGET_KERNEL_SOURCE := kernel/lenovo/a6000
-KERNEL_TOOLCHAIN := $(OUT_DIR)/../prebuilts/gcc/$(HOST_OS)-x86/arm/linaro/bin
+TOP_PATH := $(realpath $(TOP))
+KERNEL_TOOLCHAIN := $(TOP_PATH)/prebuilts/gcc/$(HOST_OS)-x86/arm/linaro/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 TARGET_KERNEL_CONFIG := lineageos_a6000_defconfig
 
@@ -76,6 +77,8 @@ ifeq ($(HOST_OS),linux)
       WITH_DEXPREOPT_DEBUG_INFO := false
   endif
 endif
+
+DISABLE_APEX_TEST_MODULE := true
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8916
@@ -162,7 +165,7 @@ BOARD_SEPOLICY_DIRS += \
 
 # Qcom Sepolicy
 # include device/qcom/sepolicy/sepolicy.mk
-# include device/qcom/sepolicy/legacy-sepolicy.mk
+# include device/qcom/sepolicy-legacy/sepolicy.mk
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true
