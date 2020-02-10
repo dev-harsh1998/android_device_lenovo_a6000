@@ -422,6 +422,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     set_zram.sh
 
+# Reduce post boot lags
+PRODUCT_PACKAGES += \
+    init.boot_boost.sh
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.a6000
