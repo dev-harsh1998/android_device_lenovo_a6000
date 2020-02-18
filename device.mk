@@ -64,6 +64,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.disable_backpressure=1 \
     debug.sf.enable_gl_backpressure=1 \
     debug.sf.latch_unsignaled=1 \
+    DEVICE_PROVISIONED=1 \
     persist.hwc.mdpcomp.enable=true \
     persist.hwc.ptor.enable=true
 
