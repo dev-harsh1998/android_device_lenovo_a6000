@@ -91,6 +91,7 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     tinyalsa \
+    tinyplay \
     tinymix \
     libaudio-resampler \
     libqcomvisualizer \
