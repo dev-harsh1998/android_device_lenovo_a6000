@@ -96,6 +96,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     tinyalsa \
     tinyplay \
+    tinypcminfo \
     tinymix \
     libaudio-resampler \
     libqcomvisualizer \
