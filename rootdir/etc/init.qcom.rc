@@ -246,11 +246,9 @@ service qseecomd /system/vendor/bin/qseecomd
    writepid /dev/cpuset/system-background/tasks
 
 service time_daemon /system/vendor/bin/time_daemon
-   capabilities SYS_TIME
-   class late_start
+   class main
    user root
    group root
-   seclabel u:object_r:time_daemon_exec:s0
    writepid /dev/cpuset/system-background/tasks
 
 service ppd /system/vendor/bin/mm-pp-daemon
