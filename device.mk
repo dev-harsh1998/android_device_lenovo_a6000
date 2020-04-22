@@ -59,12 +59,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.disable_backpressure=1 \
     debug.sf.enable_gl_backpressure=1 \
     debug.sf.latch_unsignaled=1 \
-    debug.cpurend.vsync=false \
     persist.hwc.mdpcomp.enable=true \
-    persist.hwc.ptor.enable=true \
-    debug.sf.gpu_comp_tiling=1 \
-    debug.performance.tuning=1 \
-    video.accelerate.hw=1
+    persist.hwc.ptor.enable=true
 
 # Screen density
 PRODUCT_PROPERTY_OVERRIDES += \
