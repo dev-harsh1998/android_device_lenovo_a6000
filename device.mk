@@ -462,7 +462,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-swap=false \
     dalvik.vm.dex2oat-threads=2 \
     ro.vendor.qti.am.reschedule_service=true \
-    sys.use_fifo_ui=1
+    persist.sys.scrollingcache=0 \
+    dalvik.vm.isa.arm.features=div \
+    persist.sys.dalvik.vm.lib.2=libart.so
+
 
 # TextClassifier
 PRODUCT_PACKAGES += \
