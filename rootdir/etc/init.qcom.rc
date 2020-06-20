@@ -285,4 +285,5 @@ on property:sys.boot_completed=1
     start boot_boost
     start set_baseband
     start set_zram
+    restart vendor.camera-provider-2-4
     restart cameraserver
