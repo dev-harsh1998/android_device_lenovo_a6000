@@ -64,7 +64,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.avoid_gfx_accel=true \
     DEVICE_PROVISIONED=1 \
     persist.hwc.mdpcomp.enable=true \
-    persist.hwc.ptor.enable=true
+    persist.hwc.ptor.enable=true \
+    dev.pm.dyn_samplingrate=1 \
+    persist.timed.enable=true
 
 # Screen density
 PRODUCT_PROPERTY_OVERRIDES += \
