@@ -62,7 +62,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true \
     persist.hwc.ptor.enable=true \
     dev.pm.dyn_samplingrate=1 \
-    persist.timed.enable=true
+    persist.timed.enable=true \
+    ro.hardware.egl=adreno
 
 # Screen density
 PRODUCT_PROPERTY_OVERRIDES += \
