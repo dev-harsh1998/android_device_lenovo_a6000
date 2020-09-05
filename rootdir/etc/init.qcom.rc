@@ -35,6 +35,10 @@ on early-init
     chown system system /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
+    # GPS
+    chown root gps /dev/subsys_modem
+    chmod 0660 /dev/subsys_modem
+
     # Turn off backlight on blank
     write /sys/class/leds/lcd-backlight/trigger "backlight"
 
