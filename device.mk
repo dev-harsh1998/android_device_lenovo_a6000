@@ -394,7 +394,9 @@ PRODUCT_PACKAGES += \
     libhwbinder \
     libhwbinder.vendor \
     libhidltransport \
-    libhidltransport.vendor
+    libhidltransport.vendor \
+    libjson \
+    libjson.vendor
 
 # Health
 PRODUCT_PACKAGES += \
