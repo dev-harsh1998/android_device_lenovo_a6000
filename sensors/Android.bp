@@ -31,7 +31,6 @@ cc_library_shared {
         "libbase",
         "libutils",
         "libhidlbase",
-        "libhidltransport",
         "android.hardware.sensors@1.0",
     ],
     static_libs: [
@@ -56,8 +55,6 @@ cc_binary {
         "libbase",
         "libutils",
         "libhidlbase",
-        "libhidltransport",
-        "libhwbinder",
         "android.hardware.sensors@1.0",
     ],
     arch: {
