@@ -635,6 +635,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.a6010
 
+# Disable traced and iorapd
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.iorapd.enable=false \
+	persist.traced.enable=0
+
 # USB ID
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.usb.id.midi=90BA \
